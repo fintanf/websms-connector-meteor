@@ -117,14 +117,14 @@ public class ConnectorMeteor extends Connector {
 		String processedLogin = convertToValidROINumber(login);
 		
 		if (processedLogin == null) {
-			throw new WebSMSException(context, R.string.invalid_sender_number, " " + login + " is not a valid irish mobile number.");
+			throw new WebSMSException(context.getString(R.string.invalid_sender_number, login));
 		}
 		String pass = p.getString(Preferences.PREFS_PASSWORD, "");
 
 		//If we're doing an actual login, clear cookies first
 		Utils.clearCookies();
 
-		//Log.d(TAG, "Logging in with: " + login + ", pass: " + pass);
+		//Log.d(TAG, "Logging in with: " + processedLogin + ", pass: " + pass);
 
 		//Post to login page
 		final ArrayList<BasicNameValuePair> postData = new ArrayList<BasicNameValuePair>();
@@ -155,7 +155,7 @@ public class ConnectorMeteor extends Connector {
 		for (int i = 0; i < recipients.length; i++) {
 		  String recipient = convertToValidROINumber(Utils.getRecipientsNumber(recipients[i]));
 		  if (recipient == null) {
-		    throw new WebSMSException(context, R.string.invalid_sender_number, " " + recipients[i] + " is not a valid irish mobile number.");
+		    throw new WebSMSException(context.getString(R.string.invalid_sender_number, recipients[i]));
 		  }
 			Log.d(TAG, "RECIPIENT: " + recipient);
 			processedRecipients[i] = recipient;

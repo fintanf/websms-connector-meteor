@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WebSMS Connector: Meteor (Ireland)</string>
-	<string name="app_version">0.1.0</string>
+	<string name="app_version">0.1.1</string>
 	<string name="connector_meteor_author">Fintan Fairmichael</string>
 	<string name="connector_meteor_name">meteor</string>
 	<string name="enable_meteor">Enable meteor</string>
 	<string name="settings_meteor">Preferences - meteor</string>
 	<string name="use_default_for_login_">Login with default</string>
 	<string name="use_default_for_login_hint">Use default number for login.</string>
-	<string name="invalid_sender_number">Invalid sender number.</string>
+	<string name="invalid_sender_number">Invalid sender number. %1$s is not a valid irish mobile number.</string>
+	<string name="invalid_recipient_number">Invalid recipient. %1$s is not a valid irish mobile number.</string>
 	
 	<string name="successful_send_notification_meteor_title">Success notification</string>
 	<string name="successful_send_notification_meteor_summary">Show a notification on successful sends</string>
