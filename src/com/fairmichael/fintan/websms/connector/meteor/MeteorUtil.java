@@ -18,9 +18,13 @@ import android.os.Looper;
 import android.widget.Toast;
 import de.ub0r.android.websms.connector.common.Log;
 import de.ub0r.android.websms.connector.common.Utils;
-import de.ub0r.android.websms.connector.common.WebSMSException;
 
 public class MeteorUtil {
+	
+	private static String[] METEOR_SSL_FINGERPRINTS = {
+	  "9A:71:8B:63:2A:97:C9:4B:01:31:33:30:33:A7:B5:EC:01:7A:51:BD"
+	};
+  
   public static String appendWithSeparator(final Collection<?> items, final String sep) {
     return appendWithSeparator(items, sep, false);
   }
@@ -48,7 +52,7 @@ public class MeteorUtil {
   public static String http(final Context context, final String url, final ArrayList<BasicNameValuePair> postData, final String referrer)
       throws IOException {
 
-    final HttpResponse response = Utils.getHttpClient(url, null, postData, ConnectorMeteor.USER_AGENT, referrer, ConnectorMeteor.ENCODING, false);
+    final HttpResponse response = Utils.getHttpClient(url, null, postData, ConnectorMeteor.USER_AGENT, referrer, ConnectorMeteor.ENCODING, METEOR_SSL_FINGERPRINTS);
     final int responseCode = response.getStatusLine().getStatusCode();
     if (responseCode != HttpURLConnection.HTTP_OK) {
       Log.d(ConnectorMeteor.TAG, "Received non-ok status code when attempting to load " + url);
